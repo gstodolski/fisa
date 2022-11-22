@@ -79,7 +79,7 @@ class Gui:
         tk.Button(self._options_frame, text="Submit", command=self._run_z3).grid(row=50, column=1, columnspan=2, pady=(10,0))
 
         # Output frame
-        tk.Button(self._output_frame, text="Output").grid(row=1, column=1)
+        tk.Label(self._output_frame, text="Output:").grid(row=1, column=1)
 
         self._header_frame.grid(row=1, column=1, columnspan=2, padx=50, pady=(50,0))
         self._options_frame.grid(row=2, column=1, padx=(50,20), pady=(10,50))
@@ -114,10 +114,15 @@ class Gui:
         fml = Or(f1, f2, f3, f4)
         s = Solver()
         s.add(fml)
-        print(s.check())
-        # return fml
+        self._display_output(s.check() == sat)
 
-    # def 
+    def _display_output(self, result):
+        if result:
+            tk.Label(self._output_frame, text="Yes").grid(row=2, column=1)
+        else:
+            tk.Label(self._output_frame, text="No").grid(row=2, column=1)
+
+        self._window.mainloop()
 
 if __name__ == "__main__":
     Gui()
