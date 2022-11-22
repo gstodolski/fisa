@@ -13,22 +13,22 @@ class Gui:
         self._output_frame = tk.Frame(self._window)
 
         # Variables
-        surveillance = tk.BooleanVar()
-        us_device = tk.BooleanVar()
-        wire = tk.BooleanVar()
-        radio = tk.BooleanVar()
-        monitor = tk.BooleanVar()
-        us_person = tk.BooleanVar()
-        target = tk.BooleanVar()
-        consent = tk.BooleanVar()
-        sent_loc_us = tk.BooleanVar()
-        rec_loc_us = tk.BooleanVar()
-        int_rec_loc_us = tk.BooleanVar()
-        acquire = tk.BooleanVar()
-        acq_loc_us = tk.BooleanVar()
-        intention = tk.BooleanVar()
-        is_perm = tk.BooleanVar()
-        REP_LE = tk.BooleanVar()
+        self._surveillance = tk.BooleanVar()
+        self._us_device = tk.BooleanVar()
+        self._wire = tk.BooleanVar()
+        self._radio = tk.BooleanVar()
+        self._monitor = tk.BooleanVar()
+        self._us_person = tk.BooleanVar()
+        self._target = tk.BooleanVar()
+        self._consent = tk.BooleanVar()
+        self._sent_loc_us = tk.BooleanVar()
+        self._rec_loc_us = tk.BooleanVar()
+        self._int_rec_loc_us = tk.BooleanVar()
+        self._acquire = tk.BooleanVar()
+        self._acq_loc_us = tk.BooleanVar()
+        self._intention = tk.BooleanVar()
+        self._is_perm = tk.BooleanVar()
+        self._REP_LE = tk.BooleanVar()
 
         # Header frame
         tk.Label(self._header_frame, text="FISA", font=("Times New Roman", 25)).grid(row=1, column=1)
@@ -76,7 +76,7 @@ class Gui:
         tk.Label(self._options_frame, text="Reasonable expectation of privacy and warrant required for law enforcement?").grid(row=41, column=1, sticky="w")
         tk.Checkbutton(self._options_frame, variable=REP_LE).grid(row=41, column=2)
 
-        tk.Button(self._options_frame, text="Submit").grid(row=50, column=1, columnspan=2, pady=(10,0))
+        tk.Button(self._options_frame, text="Submit", action=run_z3).grid(row=50, column=1, columnspan=2, pady=(10,0))
 
         # Output frame
         tk.Button(self._output_frame, text="Output").grid(row=1, column=1)
@@ -86,6 +86,8 @@ class Gui:
         self._output_frame.grid(row=2, column=2, padx=(20,50), pady=(10,50))
 
         self._window.mainloop()
+
+    def run_z3(self):
 
 if __name__ == "__main__":
     Gui()
