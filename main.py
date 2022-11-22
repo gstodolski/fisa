@@ -5,7 +5,6 @@ class Gui:
     def __init__(self):
         self._window = tk.Tk()
         self._window.title("FISA")
-        # self._window.geometry("800x500")
         self._window.resizable(False, False)
 
         self._header_frame = tk.Frame(self._window)
@@ -76,7 +75,7 @@ class Gui:
         tk.Label(self._options_frame, text="Reasonable expectation of privacy and warrant required for law enforcement?").grid(row=41, column=1, sticky="w")
         tk.Checkbutton(self._options_frame, variable=self._REP_LE).grid(row=41, column=2)
 
-        tk.Button(self._options_frame, text="Submit", action=self._run_z3).grid(row=50, column=1, columnspan=2, pady=(10,0))
+        tk.Button(self._options_frame, text="Submit", command=self._run_z3).grid(row=50, column=1, columnspan=2, pady=(10,0))
 
         # Output frame
         tk.Button(self._output_frame, text="Output").grid(row=1, column=1)
@@ -88,7 +87,7 @@ class Gui:
         self._window.mainloop()
 
     def _run_z3(self):
-        
+        # Put solver here
 
 if __name__ == "__main__":
     Gui()
