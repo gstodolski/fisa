@@ -36,47 +36,47 @@ class Gui:
         # Options frame
         tk.Label(self._options_frame, text="Device").grid(row=1, column=1)
         tk.Label(self._options_frame, text="Electronic, mechanical, or other surveillance device?").grid(row=2, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=surveillance).grid(row=2, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._surveillance).grid(row=2, column=2)
         tk.Label(self._options_frame, text="Device in the US?").grid(row=3, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=us_device).grid(row=3, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._us_device).grid(row=3, column=2)
         tk.Label(self._options_frame, text="Wire communication?").grid(row=4, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=wire).grid(row=4, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._wire).grid(row=4, column=2)
         tk.Label(self._options_frame, text="Radio communication?").grid(row=5, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=radio).grid(row=5, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._radio).grid(row=5, column=2)
         tk.Label(self._options_frame, text="Installation or use of device for monitoring?").grid(row=6, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=monitor).grid(row=6, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._monitor).grid(row=6, column=2)
 
         tk.Label(self._options_frame, text="Person").grid(row=10, column=1, pady=(10,0))
         tk.Label(self._options_frame, text="US person?").grid(row=11, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=us_person).grid(row=11, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._us_person).grid(row=11, column=2)
         tk.Label(self._options_frame, text="Is person a target?").grid(row=12, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=target).grid(row=12, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._target).grid(row=12, column=2)
         tk.Label(self._options_frame, text="Did party give consent?").grid(row=13, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=consent).grid(row=13, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._consent).grid(row=13, column=2)
 
         tk.Label(self._options_frame, text="Location").grid(row=20, column=1, pady=(10,0))
         tk.Label(self._options_frame, text="Sending location in the US?").grid(row=21, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=sent_loc_us).grid(row=21, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._sent_loc_us).grid(row=21, column=2)
         tk.Label(self._options_frame, text="Receiving location in the US?").grid(row=22, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=rec_loc_us).grid(row=22, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._rec_loc_us).grid(row=22, column=2)
         tk.Label(self._options_frame, text="All intended recipients located in the US?").grid(row=23, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=int_rec_loc_us).grid(row=23, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._int_rec_loc_us).grid(row=23, column=2)
 
         tk.Label(self._options_frame, text="Acquisition").grid(row=30, column=1, pady=(10,0))
         tk.Label(self._options_frame, text="Was content acquired?").grid(row=31, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=acquire).grid(row=31, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._acquire).grid(row=31, column=2)
         tk.Label(self._options_frame, text="Acquisition in US?").grid(row=32, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=acq_loc_us).grid(row=32, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._acq_loc_us).grid(row=32, column=2)
         tk.Label(self._options_frame, text="Intentional acquisition?").grid(row=33, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=intention).grid(row=33, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._intention).grid(row=33, column=2)
         tk.Label(self._options_frame, text="Acquisition permissible under section 2511(2)(i) of title 18?").grid(row=34, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=is_perm).grid(row=34, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._is_perm).grid(row=34, column=2)
 
         tk.Label(self._options_frame, text="Circumstances").grid(row=40, column=1, pady=(10,0))
         tk.Label(self._options_frame, text="Reasonable expectation of privacy and warrant required for law enforcement?").grid(row=41, column=1, sticky="w")
-        tk.Checkbutton(self._options_frame, variable=REP_LE).grid(row=41, column=2)
+        tk.Checkbutton(self._options_frame, variable=self._REP_LE).grid(row=41, column=2)
 
-        tk.Button(self._options_frame, text="Submit", action=run_z3).grid(row=50, column=1, columnspan=2, pady=(10,0))
+        tk.Button(self._options_frame, text="Submit", action=self._run_z3).grid(row=50, column=1, columnspan=2, pady=(10,0))
 
         # Output frame
         tk.Button(self._output_frame, text="Output").grid(row=1, column=1)
@@ -87,7 +87,8 @@ class Gui:
 
         self._window.mainloop()
 
-    def run_z3(self):
+    def _run_z3(self):
+        
 
 if __name__ == "__main__":
     Gui()
