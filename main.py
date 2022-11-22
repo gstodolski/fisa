@@ -1,4 +1,5 @@
 import tkinter as tk
+from z3 import *
 
 class Gui:
     """Create a GUI window"""
@@ -87,7 +88,36 @@ class Gui:
         self._window.mainloop()
 
     def _run_z3(self):
-        # Put solver here
+        surveillance = self._surveillance.get()
+        us_person = self._us_person.get()
+        us_device  = self._us_person.get()
+        consent = self._consent.get()
+        target = self._target.get()
+
+        radio = self._radio.get()
+        wire = self._wire.get()
+        intention = self._intention.get()
+        surveillance = self._surveillance.get()
+        monitor = self._monitor.get()
+        acquire = self._acquire.get()
+        sent_loc_us = self._sent_loc_us.get()
+        rec_loc_us = self._rec_loc_us.get()
+        int_rec_loc_us = self._int_rec_loc_us.get()
+        acq_loc_us = self._acq_loc_us.get()
+        is_perm = self._is_perm.get()
+        REP_LE = self._REP_LE.get()
+ 
+        f1 = And(surveillance, Or(radio, wire), acquire, us_person, target, Or(sent_loc_us, rec_loc_us), REP_LE)
+        f2 = And(surveillance, us_person, target, wire, Or(sent_loc_us, rec_loc_us), Not(consent), acq_loc_us, Not(is_perm), acquire)
+        f3 = And(radio, acquire, intention, surveillance, REP_LE, sent_loc_us, int_rec_loc_us) 
+        f4 = And(surveillance, us_device, REP_LE, Not(Or(radio, wire)), monitor)
+        fml = Or(f1, f2, f3, f4)
+        s = Solver()
+        s.add(fml)
+        print(s.check())
+        # return fml
+
+    # def 
 
 if __name__ == "__main__":
     Gui()
